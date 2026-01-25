@@ -1,5 +1,5 @@
 {
-  "name": "workspaces",
+  "name": "coffee-lounge-monorepo",
   "private": "true",
   "module": "index.ts",
   "type": "module",
