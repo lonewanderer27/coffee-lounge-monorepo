@@ -1,0 +1,13 @@
+{
+  "name": "backend",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "supabase": "^2.72.8"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
