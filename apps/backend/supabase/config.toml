@@ -64,7 +64,8 @@ enabled = true
 # Supports glob patterns relative to supabase directory: "./seeds/*.sql"
 sql_paths = [
     './seeds/country.sql',
-    './seeds/addon_category.sql'
+    './seeds/addon_category.sql',
+    './seeds/products.sql'
 ]
 
 [db.network_restrictions]
