@@ -65,7 +65,8 @@ enabled = true
 sql_paths = [
     './seeds/country.sql',
     './seeds/addon_category.sql',
-    './seeds/products.sql'
+    './seeds/products.sql',
+    './seeds/payment_methods.sql'
 ]
 
 [db.network_restrictions]
