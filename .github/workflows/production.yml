@@ -22,5 +22,10 @@ jobs:
         with:
           version: latest
 
-      - run: supabase link --project-ref $SUPABASE_PROJECT_ID
-      - run: supabase db push
+      - name: Link Supabase project
+        working-directory: apps/backend
+        run: supabase link --project-ref $SUPABASE_PROJECT_ID
+
+      - name: Push database migrations
+        working-directory: apps/backend
+        run: supabase db push

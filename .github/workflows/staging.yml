@@ -18,9 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: supabase/setup-cli@v1
-        with:
-          version: latest
+      - name: Link Supabase project
+        working-directory: apps/backend
+        run: supabase link --project-ref $SUPABASE_PROJECT_ID
 
-      - run: supabase link --project-ref $SUPABASE_PROJECT_ID
-      - run: supabase db push
+      - name: Push database migrations
+        working-directory: apps/backend
+        run: supabase db push
