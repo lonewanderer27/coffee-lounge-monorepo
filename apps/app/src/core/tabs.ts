@@ -3,7 +3,7 @@ import {
   glassesOutline,
   personCircleOutline,
 } from "ionicons/icons";
-import { TabType } from "./types";
+import { TabType } from "../types/tab-type";
 import OrderPage from "../features/order/presentation/pages/order-page";
 import ExplorePage from "../features/explore/presentation/pages/explore-page";
 import MePage from "../features/me/presentation/pages/me-page";
