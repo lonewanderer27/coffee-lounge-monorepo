@@ -29,3 +29,7 @@ jobs:
       - name: Push database migrations
         working-directory: ./apps/backend
         run: supabase db push
+
+      - name: Deploy edge functions
+        working-directory: ./apps/backend
+        run: supabase functions deploy --project-ref $SUPABASE_PROJECT_ID
