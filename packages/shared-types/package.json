@@ -1,0 +1,6 @@
+{
+    "name": "@coffee-lounge-monorepo/shared-types",
+    "version": "0.1.0",
+    "main": "src/types/index.ts",
+    "types": "src/types/index.ts" 
+}
