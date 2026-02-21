@@ -1,61 +1,15 @@
-"use client";
+import ProductEdit from "@components/products/edit";
+import { serverSupabaseClient } from "@utils/supabase/server";
+import { notFound } from "next/navigation";
 
-import { Edit, useForm, useSelect } from "@refinedev/antd";
-import { Form, Input, Select } from "antd";
+export default async function ProductEditPage({ params }: { params: Promise<{ id: number }> }) {
+  const { id } = await params;
+  const client = await serverSupabaseClient();
+  const { data } = await client.from("product").select().eq("id", id).single();
 
-export default function ProductEdit() {
-  const { formProps, saveButtonProps, query } = useForm({
-    meta: {
-      select: "*, category(id)",
-    },
-  });
-
-  const productData = query?.data?.data;
-
-  const { selectProps: categorySelectProps } = useSelect({
-    resource: "category",
-    optionLabel: "name",
-    defaultValue: productData?.category.id,
-  });
+  if (!data) notFound();
 
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <Form {...formProps} layout="vertical">
-        <Form.Item
-          label={"Product"}
-          name={["name"]}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label={"Description"}
-          name="description"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input.TextArea rows={5} />
-        </Form.Item>
-        <Form.Item
-          label={"Category"}
-          name={"category_type_id"}
-          initialValue={formProps?.initialValues?.category?.id}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Select {...categorySelectProps} />
-        </Form.Item>
-      </Form>
-    </Edit>
+    <ProductEdit product={data} />
   );
 }
