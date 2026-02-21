@@ -64,6 +64,13 @@ export default async function RootLayout({
                           canDelete: true,
                         },
                       },
+                      {
+                        name: "product",
+                        list: "/products",
+                        meta: {
+                          canDelete: true
+                        }
+                      }
                     ]}
                     options={{
                       syncWithLocation: true,
