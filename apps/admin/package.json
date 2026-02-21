@@ -38,7 +38,8 @@
     "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "16.1.6",
-    "@types/js-cookie": "^3.0.6"
+    "@types/js-cookie": "^3.0.6",
+    "@coffee-lounge-monorepo/shared-types": "workspace:*"
   },
   "refine": {
     "projectId": "3Ox899-wVJLFB-YJ9Qir"
