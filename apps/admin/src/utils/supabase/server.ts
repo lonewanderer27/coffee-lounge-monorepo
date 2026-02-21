@@ -1,5 +1,6 @@
 import { Database } from "@coffee-lounge-monorepo/shared-types/src/types/database.gen";
 import { CookieOptions, createServerClient } from "@supabase/ssr";
+import { type SupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
 export const serverSupabaseClient = async () => {
@@ -33,5 +34,5 @@ export const serverSupabaseClient = async () => {
         },
       },
     },
-  );
+  ) as unknown as SupabaseClient<Database>;
 };
