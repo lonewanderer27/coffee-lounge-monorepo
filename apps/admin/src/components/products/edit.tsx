@@ -1,18 +1,19 @@
 "use client";
 
+import ICategory from "@interfaces/categories";
 import IProduct from "@interfaces/products";
 import { Edit, useForm, useSelect } from "@refinedev/antd";
 import { Form, Input, Select } from "antd";
 
-export default function ProductEdit(props: { product: IProduct }) {
+export default function ProductEdit(props: {
+  product: IProduct,
+  categories: ICategory[]
+}) {
   const { formProps, saveButtonProps, query } = useForm({
     queryOptions: {
       initialData: {
         data: props.product
       }
-    },
-    meta: {
-      select: "*, category(id)",
     },
   });
 
@@ -22,7 +23,11 @@ export default function ProductEdit(props: { product: IProduct }) {
     resource: "category",
     optionLabel: "name",
     queryOptions: {
-      enabled: !!productData
+      enabled: !!productData,
+      initialData: {
+        data: props.categories,
+        total: props.categories.length
+      }
     }
   });
 
