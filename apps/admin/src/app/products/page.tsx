@@ -7,12 +7,21 @@ import {
   List,
   ShowButton,
   useTable,
+  getDefaultSortOrder
 } from "@refinedev/antd";
 import { type BaseRecord, useMany } from "@refinedev/core";
 import { Space, Table } from "antd";
 
 export default function ProductsList() {
-  const { result, tableProps } = useTable({
+  const { result, tableProps, sorters } = useTable({
+    sorters: {
+      initial: [
+        {
+          field: "name",
+          order: "asc"
+        }
+      ]
+    },
     meta: {
       select: "*, category(id)"
     }
@@ -33,11 +42,11 @@ export default function ProductsList() {
     <List>
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="id" title={"ID"} />
-        <Table.Column dataIndex="name" title={"Product"} />
         <Table.Column
-          dataIndex="description"
-          title={"Description"}
-          render={(value) => value ? value : 'N/A'}
+          dataIndex="name"
+          title={"Product"}
+          sorter={{ multiple: 1 }}
+          defaultSortOrder={getDefaultSortOrder("name", sorters)}
         />
         <Table.Column
           dataIndex={"category"}
@@ -49,6 +58,11 @@ export default function ProductsList() {
               categories?.find((item) => item.id === value?.id)?.name
             )
           }
+        />
+        <Table.Column
+          dataIndex="description"
+          title={"Description"}
+          render={(value) => value ? value : 'N/A'}
         />
         <Table.Column
           dataIndex={["created_at"]}
