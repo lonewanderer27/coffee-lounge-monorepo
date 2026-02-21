@@ -68,6 +68,7 @@ export default async function RootLayout({
                         name: "product",
                         list: "/products",
                         show: "/products/show/:id",
+                        edit: "/products/edit/:id",
                         meta: {
                           canDelete: true
                         }
